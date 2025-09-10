@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Graphic Design Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background: #0077cc;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #e0e0e0;
+      padding: 10px;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      margin: 0 15px;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 10px;
+      transition: all 0.3s;
+    }
+
+    nav button.active, nav button:hover {
+      color: #0077cc;
+      font-weight: bold;
+      border-bottom: 2px solid #0077cc;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .category {
+      display: none;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .category.active {
+      display: grid;
+    }
+
+    .card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      padding: 10px;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Graphic Design Dashboard</h1>
+    <p>Pamphlets | Posters | Danglers | Visiting Cards</p>
+  </header>
+
+  <nav>
+    <button class="tab-button active" data-target="pamphlets">Pamphlets</button>
+    <button class="tab-button" data-target="posters">Posters</button>
+    <button class="tab-button" data-target="danglers">Danglers</button>
+    <button class="tab-button" data-target="visitingcards">Visiting Cards</button>
+  </nav>
+
+  <div class="content">
+    <div id="pamphlets" class="category active">
+      <div class="card">
+        <img src="https://via.placeholder.com/300x150.png?text=Pamphlet+1" alt="Pamphlet 1">
+        <h3>Pamphlet Design 1</h3>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300x150.png?text=Pamphlet+2" alt="Pamphlet 2">
+        <h3>Pamphlet Design 2</h3>
+      </div>
+    </div>
+
+    <div id="posters" class="category">
+      <div class="card">
+        <img src="https://via.placeholder.com/300x150.png?text=Poster+1" alt="Poster 1">
+        <h3>Poster Design 1</h3>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300x150.png?text=Poster+2" alt="Poster 2">
+        <h3>Poster Design 2</h3>
+      </div>
+    </div>
+
+    <div id="danglers" class="category">
+      <div class="card">
+        <img src="https://via.placeholder.com/300x150.png?text=Dangler+1" alt="Dangler 1">
+        <h3>Dangler Design 1</h3>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300x150.png?text=Dangler+2" alt="Dangler 2">
+        <h3>Dangler Design 2</h3>
+      </div>
+    </div>
+
+    <div id="visitingcards" class="category">
+      <div class="card">
+        <img src="https://via.placeholder.com/300x150.png?text=Visiting+Card+1" alt="Visiting Card 1">
+        <h3>Visiting Card Design 1</h3>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300x150.png?text=Visiting+Card+2" alt="Visiting Card 2">
+        <h3>Visiting Card Design 2</h3>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll(".tab-button");
+    const categories = document.querySelectorAll(".category");
+
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        buttons.forEach(btn => btn.classList.remove("active"));
+        categories.forEach(cat => cat.classList.remove("active"));
+
+        button.classList.add("active");
+        document.getElementById(button.dataset.target).classList.add("active");
+      });
+    });
+  </script>
+
+</body>
+</html>
